@@ -71,7 +71,7 @@ jotta sai tehtyä Meterpreter Bind Shellin.
 
 (IppSec. 2017)
 
-## a) We like to shop. Ratkaise Portswigger Academyn ["Lab: SQL injection vulnerability in WHERE clause allowing retrieval of hidden data"](https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data). (Tee tarvittaessa tunnus Portswigger Academyyn).
+## a) We like to shop. Ratkaise Portswigger Academyn "[Lab: SQL injection vulnerability in WHERE clause allowing retrieval of hidden data](https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data)". (Tee tarvittaessa tunnus Portswigger Academyyn).
 
 
 
