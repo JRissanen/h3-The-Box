@@ -22,5 +22,48 @@ sitä kautta ColdFusion sovelluksen admin sisäänkirjautumissivulle.
 * Metasploitable aikakatkaisi hyökkäyksen, koska alkuperäisen osoitteen latausaika on 20-30s, joten 
 IppSec käytti Burp Suite -nimistä ohjelmaa hyökkäyksen ajamiseen/debuggaamiseen.
 
-* Hyökkäyksen seurauksena sai tehtyä reverse shellin ja hyödynsi seuraavaksi Unicorn -nimistä työkalua,
-jotta sai tehtyä meterpreter shellin.
+* Hyökkäyksen seurauksena sai tehtyä Reverse Shellin ja hyödynsi seuraavaksi Unicorn -nimistä työkalua,
+jotta sai tehtyä Meterpreter Bind Shellin.
+  * Reverse Shell: Hyökkääjän on käynnistettävä palvelin omalla koneellaan, johon kohdekone ottaa yhteyden.
+  * Bind Shell: Hyökkääjä käynnistää etäkonsolin (remote console) avulla kohdekoneessa palvelun, johon hyökkääjä voi muodostaa yhteyden.
+   (GeeksforGeeks, richasalan57. 2022) 
+
+* Lopuksi IppSec hyödynsi Meterpreteriä ja etsi `local_exploit_suggester` työkalun avulla hyökkäyksen, joka toimi 32-bittisellä ja 64-bittisellä Windows käyttöjärjestelmällä (x64/x86).
+
+* Lopullinen hyökkäys, jolla koneeseen päästiin murtautumaan oli `exploit/windows/local/ms10_092_schelevator`.
+
+(IppSec. 2017)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Lähteet
+
+https://terokarvinen.com/2023/tunkeutumistestaus-2023-kevat/#h3-the-box </br>
+https://www.youtube.com/@ippsec/videos </br>
+https://www.youtube.com/watch?v=e9lVyFH7-4o </br>
+https://www.geeksforgeeks.org/difference-between-bind-shell-and-reverse-shell/ </br>
+
+
+
+
+
+
+
+
+
+
+
