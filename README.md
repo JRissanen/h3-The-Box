@@ -94,10 +94,12 @@ Ensin huomasin, ettei yksikään pyynnöistä ollut POST-metodin pyyntö, joihin
 Sitten huomasin yhden pyynnön olevan "HTTP status 101", joten lähdin sitä tutkimaan avaamalla "Headers" välilehdellä näkyvän "101 Switching Protocol" tekstin vieressä olevan [kysymysmerkin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/101?utm_source=mozilla&utm_medium=devtools-netmonitor&utm_campaign=default). </br>
 
 Siitä aukesi sivu, joka selitti statuksen tarkoitusen. </br>
+
 ![Screenshot 2023-04-20 164926](https://user-images.githubusercontent.com/116954333/233394058-a8a047dc-f32e-4e0c-8007-4ba1241e12f3.png)
 
 Ilmeisesti 101-status tarkoittaa, että palvelin vaihtaa protokollaa kyseisen pyynnön kohdalla ja vaihdetun protokollan tyyppi on määritelty "Upgrade" kohdassa. </br>
 Huomasin, että labran pyynnössä oli myös tämän sivun esimerkin mukaisesti "WebSocket" määritys, joten seurasin sivun [linkkiä](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) aiheesta.
+
 ![Screenshot 2023-04-20 170204](https://user-images.githubusercontent.com/116954333/233393809-794306f4-835a-438a-b463-940584d5fb52.png)
 
 Ilmeisesti WebSocketin avulla on mahdollista avata kaksisuuntainen kommunikaatio sessio käyttäjän selaimen ja palvelimen välillä. </br>
@@ -117,7 +119,9 @@ Eli sivun alaotsikko vain muuttui ja tuotteet katosivat. </br>
 Tämä tulostus ei vielä minulle paljoa kerro, mutta ainakin jotain tapahtui.
 
 Tutkin eri tulosteita hakukentistä ja huomasin, että yksittäisen tuotteen hakukentässä oli kohta `product?productId=<numero>` ja vaihtamalla viimeistä numeroa sai yksittäisiä tuotteita näkyviin, joita ei ollut alku sivun "All" välilehdellä näkyvissä, joten päättelin, että nämä tuotteet ovat piilotettuja.
+
 ![Screenshot 2023-04-20 180834](https://user-images.githubusercontent.com/116954333/233409190-644182e4-f2f5-4820-81c0-ede94e1c9c38.png)
+
 ![Screenshot 2023-04-20 180949](https://user-images.githubusercontent.com/116954333/233409583-b3982baf-96c3-45e8-9b27-5d4e083d567e.png)
 
 Kokeilin lukuisia eri vaihtoehtoja (esim: `*`, `--`, `blank`, `0` jne...) `productid=` kohtaan, mutta en saanut mitään edistävää tulosta.
@@ -127,6 +131,7 @@ Kokeilin lukuisia eri vaihtoehtoja (esim: `*`, `--`, `blank`, `0` jne...) `produ
 ![Screenshot 2023-04-20 181434](https://user-images.githubusercontent.com/116954333/233411736-ed170468-0fd1-4798-90e3-95c711bd0454.png)
 
 Lopulta en keksinyt enää mitä kokeilla, joten palasin takaisin labran ohjeistukseen ja katsoin ratkaisun: </br>
+
 ![Screenshot 2023-04-20 183458](https://user-images.githubusercontent.com/116954333/233416255-64b220fb-cf42-4723-b1e5-6cc8a371955f.png)
 
 Eli oikea ratkaisu olisi ollut syöttää `category` kohdalle parametriksi: `'+OR+1=1--'`. </br>
