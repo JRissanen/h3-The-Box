@@ -73,10 +73,36 @@ jotta sai tehtyä Meterpreter Bind Shellin.
 
 ## a) We like to shop. Ratkaise Portswigger Academyn "[Lab: SQL injection vulnerability in WHERE clause allowing retrieval of hidden data](https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data)". (Tee tarvittaessa tunnus Portswigger Academyyn).
 
+Aloitin tekemällä käyttäjän PortSwiggerin sivuille ja lukemalla labran ohjeistuksen.
 
+![Screenshot 2023-04-20 161553](https://user-images.githubusercontent.com/116954333/233378766-c5da33ea-1730-4855-8811-153c5ab11de4.png)
 
+Eli ennakkoon annetun infon mukaan tiedän, että haavoittuvuutta kannattaa etsiä tuote kategoria suodattimesta (product category filter). </br>
+Tiedän myös, että SQL query on mallia `SELECT * FROM products WHERE category = 'Gifts' AND released = 1`. </br>
+Labran ratkaisuun pitää siis tehdä SQL-injektiohyökkäys, jonka seurauksena saa kaikkien tuotteiden tiedot esiin joka kategoriasta sekä vapauteuista että ei vapautetuista (released & unreleased).
 
+Aloitin labran "Access the lab" painikkeesta ja aukesi seuraava näkymä:
 
+![Screenshot 2023-04-20 162803](https://user-images.githubusercontent.com/116954333/233382874-20ecde37-1bb1-438c-9382-503340c1039d.png)
+
+Klikkailin sivun kuvakkeita ja tekstejä, mutta en löytänyt yhtäkään tekstikenttää, johon olisi voinut syöttää tekstiä. </br>
+Avasin Developer Toolin F12 painikkeella ja menin "Network" välilehdelle, tyhjensin sen vasemman yläreunan roskakorista ja latasin sivulla näkyvästä "Home" linkistä sivun uudelleen ja katsoin tulostusta:
+
+![Screenshot 2023-04-20 164320](https://user-images.githubusercontent.com/116954333/233392355-d0dbfbd0-8b7e-47aa-ad8e-a3dcf1d206e9.png)
+
+Ensin huomasin, ettei yksikään pyynnöistä ollut POST-metodin pyyntö, joihin oli hyökäytty aiemmissa harjoituksissa. </br>
+Sitten huomasin yhden pyynnön olevan "HTTP status 101", joten lähdin sitä tutkimaan avaamalla "Headers" välilehdellä näkyvän "101 Switching Protocol" tekstin vieressä olevan [kysymysmerkin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/101?utm_source=mozilla&utm_medium=devtools-netmonitor&utm_campaign=default). </br>
+
+![Screenshot 2023-04-20 164320](https://user-images.githubusercontent.com/116954333/233389493-9303b938-75bf-4f41-9b7a-4cc36bc5c0d5.png)
+
+Siitä aukesi sivu, joka selitti statuksen tarkoitusen. </br>
+Ilmeisesti 101-status tarkoittaa, että palvelin vaihtaa protokollaa kyseisen pyynnön kohdalla ja vaihdetun protokollan tyyppi on määritelty "Upgrade" kohdassa. </br>
+Huomasin, että labran pyynnössä oli myös tämän sivun esimerkin mukaisesti "WebSocket" määritys, joten seurasin sivun linkkiä aiheesta.
+
+![Screenshot 2023-04-20 164926](https://user-images.githubusercontent.com/116954333/233394058-a8a047dc-f32e-4e0c-8007-4ba1241e12f3.png)
+![Screenshot 2023-04-20 170204](https://user-images.githubusercontent.com/116954333/233393809-794306f4-835a-438a-b463-940584d5fb52.png)
+
+We
 
 
 
@@ -94,6 +120,7 @@ https://www.youtube.com/@ippsec/videos </br>
 https://www.youtube.com/watch?v=e9lVyFH7-4o </br>
 https://www.geeksforgeeks.org/difference-between-bind-shell-and-reverse-shell/ </br>
 https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data </br>
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/101?utm_source=mozilla&utm_medium=devtools-netmonitor&utm_campaign=default </br>
 
 
 
