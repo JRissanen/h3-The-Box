@@ -93,16 +93,62 @@ Avasin Developer Toolin F12 painikkeella ja menin "Network" välilehdelle, tyhje
 Ensin huomasin, ettei yksikään pyynnöistä ollut POST-metodin pyyntö, joihin oli hyökäytty aiemmissa harjoituksissa. </br>
 Sitten huomasin yhden pyynnön olevan "HTTP status 101", joten lähdin sitä tutkimaan avaamalla "Headers" välilehdellä näkyvän "101 Switching Protocol" tekstin vieressä olevan [kysymysmerkin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/101?utm_source=mozilla&utm_medium=devtools-netmonitor&utm_campaign=default). </br>
 
-![Screenshot 2023-04-20 164320](https://user-images.githubusercontent.com/116954333/233389493-9303b938-75bf-4f41-9b7a-4cc36bc5c0d5.png)
-
 Siitä aukesi sivu, joka selitti statuksen tarkoitusen. </br>
-Ilmeisesti 101-status tarkoittaa, että palvelin vaihtaa protokollaa kyseisen pyynnön kohdalla ja vaihdetun protokollan tyyppi on määritelty "Upgrade" kohdassa. </br>
-Huomasin, että labran pyynnössä oli myös tämän sivun esimerkin mukaisesti "WebSocket" määritys, joten seurasin sivun linkkiä aiheesta.
-
 ![Screenshot 2023-04-20 164926](https://user-images.githubusercontent.com/116954333/233394058-a8a047dc-f32e-4e0c-8007-4ba1241e12f3.png)
+
+Ilmeisesti 101-status tarkoittaa, että palvelin vaihtaa protokollaa kyseisen pyynnön kohdalla ja vaihdetun protokollan tyyppi on määritelty "Upgrade" kohdassa. </br>
+Huomasin, että labran pyynnössä oli myös tämän sivun esimerkin mukaisesti "WebSocket" määritys, joten seurasin sivun [linkkiä](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) aiheesta.
 ![Screenshot 2023-04-20 170204](https://user-images.githubusercontent.com/116954333/233393809-794306f4-835a-438a-b463-940584d5fb52.png)
 
-We
+Ilmeisesti WebSocketin avulla on mahdollista avata kaksisuuntainen kommunikaatio sessio käyttäjän selaimen ja palvelimen välillä. </br>
+En ymmärrä täysin tätä toimintalogiikkaa, joten en jää tässä vaiheessa siihen jumiin, vaan selvitän muita tapoja.
+
+![Screenshot 2023-04-20 165017](https://user-images.githubusercontent.com/116954333/233396452-5cc22253-a905-46f0-b2a9-c5c3d777d1a8.png)
+
+Klikatessani itseni "Corporate gifts" välilehdelle, huomasin, että selaimen teksi muuttui tehtävän kuvauksessa annettua SQL querya vastaavan näköiseksi.
+
+![Screenshot 2023-04-20 172837](https://user-images.githubusercontent.com/116954333/233397944-9d7f07eb-0298-4775-9fe5-81f3ed4d11cd.png)
+
+Koitin syöttää hakukenttään `category=Gifts+released=1` tekstin ja sain seuraavanlaisen tulostuksen:
+
+![Screenshot 2023-04-20 173352](https://user-images.githubusercontent.com/116954333/233406493-938093df-e480-433d-bd23-156ab148e147.png)
+
+Eli sivun alaotsikko vain muuttui ja tuotteet katosivat. </br>
+Tämä tulostus ei vielä minulle paljoa kerro, mutta ainakin jotain tapahtui.
+
+Tutkin eri tulosteita hakukentistä ja huomasin, että yksittäisen tuotteen hakukentässä oli kohta `product?productId=<numero>` ja vaihtamalla viimeistä numeroa sai yksittäisiä tuotteita näkyviin, joita ei ollut alku sivun "All" välilehdellä näkyvissä, joten päättelin, että nämä tuotteet ovat piilotettuja.
+![Screenshot 2023-04-20 180834](https://user-images.githubusercontent.com/116954333/233409190-644182e4-f2f5-4820-81c0-ede94e1c9c38.png)
+![Screenshot 2023-04-20 180949](https://user-images.githubusercontent.com/116954333/233409583-b3982baf-96c3-45e8-9b27-5d4e083d567e.png)
+
+Kokeilin lukuisia eri vaihtoehtoja (esim: `*`, `--`, `blank`, `0` jne...) `productid=` kohtaan, mutta en saanut mitään edistävää tulosta.
+
+![Screenshot 2023-04-20 181225](https://user-images.githubusercontent.com/116954333/233411697-f346a246-7193-4cb5-ad5a-3c28d8cbc49c.png)
+![Screenshot 2023-04-20 181302](https://user-images.githubusercontent.com/116954333/233411715-03a0ff34-f218-4b63-9dbc-a2dc9581eb64.png)
+![Screenshot 2023-04-20 181434](https://user-images.githubusercontent.com/116954333/233411736-ed170468-0fd1-4798-90e3-95c711bd0454.png)
+
+Lopulta en keksinyt enää mitä kokeilla, joten palasin takaisin labran ohjeistukseen ja katsoin ratkaisun: </br>
+![Screenshot 2023-04-20 183458](https://user-images.githubusercontent.com/116954333/233416255-64b220fb-cf42-4723-b1e5-6cc8a371955f.png)
+
+Eli oikea ratkaisu olisi ollut syöttää `category` kohdalle parametriksi: `'+OR+1=1--'`. </br>
+`1=1` antaa parametrille arvon `true`, joka puolestaan palauttaa kaikki tulokset kun loppupsa kommentoidaan pois käyttämällä: `--`. </br>
+Tämä on aiemmista tehtävistä tuttu ratkaisu tapa ja olin itsekin oikeilla jäljillä tehdessäni harjoitusta. </br>
+En vain osannut ilman ratkaisua kirjoittaa oikean muotoista SQL-injektiota oikeaan paikkaan. Tämä siksi, että olen aiemmin tehnyt vain tekstikenttiin hyökkäyksiä, enkä verkkosivun hakukenttiin.
+
+![Screenshot 2023-04-20 183458](https://user-images.githubusercontent.com/116954333/233420293-9aa4c7c7-dbbc-48fa-bd54-91e686d10d75.png)
+
+![Screenshot 2023-04-20 185030](https://user-images.githubusercontent.com/116954333/233420321-f504b11d-8c42-4dab-b440-cac3f6274b8b.png)
+
+## b) HTB. Tee HackTheBox.com tunnus. Avaa OpenVPN-yhteys "Starting Point" verkkoon. Estä tunnelin ulkopuolinen liikenne eli liikenne oikeaan Internettiin (vinkit alla). Testaa, että normaali Internet-liikenteesi on estetty.
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -121,6 +167,8 @@ https://www.youtube.com/watch?v=e9lVyFH7-4o </br>
 https://www.geeksforgeeks.org/difference-between-bind-shell-and-reverse-shell/ </br>
 https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data </br>
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/101?utm_source=mozilla&utm_medium=devtools-netmonitor&utm_campaign=default </br>
+https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API </br>
+
 
 
 
