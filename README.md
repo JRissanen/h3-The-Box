@@ -118,7 +118,7 @@ Koitin syöttää hakukenttään `category=Gifts+released=1` tekstin ja sain seu
 Eli sivun alaotsikko vain muuttui ja tuotteet katosivat. </br>
 Tämä tulostus ei vielä minulle paljoa kerro, mutta ainakin jotain tapahtui.
 
-Tutkin eri tulosteita hakukentistä ja huomasin, että yksittäisen tuotteen hakukentässä oli kohta `product?productId=<numero>` ja vaihtamalla viimeistä numeroa sai yksittäisiä tuotteita näkyviin, joita ei ollut alku sivun "All" välilehdellä näkyvissä, joten päättelin, että nämä tuotteet ovat piilotettuja.
+Tutkin eri tulosteita hakukentistä ja huomasin, että yksittäisen tuotteen hakukentässä oli kohta `product?productId=<numero>` ja vaihtamalla viimeistä numeroa sai yksittäisiä tuotteita näkyviin, joita ei ollut alku sivun "All" välilehdellä näkyvissä, joten päättelin, että nämä tuotteet ovat piilotettuja. </br>
 
 ![Screenshot 2023-04-20 180834](https://user-images.githubusercontent.com/116954333/233409190-644182e4-f2f5-4820-81c0-ede94e1c9c38.png)
 
