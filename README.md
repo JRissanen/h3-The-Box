@@ -155,7 +155,7 @@ Prosessi oli seuraava: Connect to HTB -> Starting Point -> OpenVPN -> VPN Access
 
 ![Screenshot 2023-04-21 145700](https://user-images.githubusercontent.com/116954333/233674189-fa9974b0-0c47-47be-af2e-4ead84bd2ef1.png)
 
-Seuraavaksi piti määrittää "Network Connections" kohdasta juuri lataamani VPN aktiiviseksi. </br>
+Seuraavaksi piti määrittää "Network Connections" kohdasta juuri lataamani VPN käyttövalmiiksi. </br>
 Eli: Network Connections -> VPN Connections -> Add a VPN connection... -> Import a saved VPN configuration... (Scroll menun viimeinen kohta) -> Create... -> Open starting_point_omattiedot.ovpn -> Save.
 
 ![Screenshot 2023-04-21 145830](https://user-images.githubusercontent.com/116954333/233701145-22127dfd-d5a6-449c-913a-d69d1c357267.png)
@@ -168,7 +168,17 @@ Eli: Network Connections -> VPN Connections -> Add a VPN connection... -> Import
 
 ![Screenshot 2023-04-21 150121](https://user-images.githubusercontent.com/116954333/233701220-d0aafc07-883c-44d6-abed-b48bb42b4c99.png)
 
-Nyt 
+Nyt minulla on siis Kali hyökkäyskoneellani OpenVPN yhteys (olemassa, ei vielä aktiivinen) Hack The Box Starting Point koneisiin. </br>
+OpenVPN yhteyden sain aktiiviseksi menemällä normaalikäyttäjänä hakemistoon, jossa OpenVPN tiedosto oli ja antamalla komennon: `sudo su` (ja salasanan). Näin pääsin ajamaan pääkäyttäjänä (root) komennon `openvpn starting_point_JRissanen.ovpn`, joka aktivoi OpenVPN yhteyden. 
+
+
+
+Seuraavaksi minulla kesti ymmärtää, miten saan tehtävät tehtyä siten, että hyökkäyskoneeni ei ole yhteydessä Internettiin, vaan pelkästään VPN:än välityksellä yhteydessä Hack The Box koneeseen. </br>
+Kurssilaiseni [Antti Halonen](https://github.com/therealhalonen/penetration_testing) neuvoi pitämään Hack The Boxin auki host koneella ja ottamalla virtuaalisella Kali hyökkäyskoneella VPN yhteyden host koneen Hack The Box koneeseen.
+
+Eli tähän asti olen tehnyt kaiken virtuaalisella Kali hyökkäyskoneellani. </br>
+
+
 
 
 Seuraavaksi katsoin sivun säännöt kohdan "Connect to HTB"(punainen tausta) tai "<aktiivinen kohta>" (vihreä tausta, minun kuvassa "STARTING POINT") vieressä olevasta kysymysmerkistä:
@@ -211,6 +221,8 @@ https://www.geeksforgeeks.org/difference-between-bind-shell-and-reverse-shell/ <
 https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data </br>
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/101?utm_source=mozilla&utm_medium=devtools-netmonitor&utm_campaign=default </br>
 https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API </br>
+https://github.com/therealhalonen/penetration_testing </br>
+
 
 
 
