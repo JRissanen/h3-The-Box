@@ -187,7 +187,7 @@ Yritän vielä havainnollistaa seuraavalla kuvankaappauksella:
 
 ![Screenshot 2023-04-21 175724](https://user-images.githubusercontent.com/116954333/233710273-cc95de3b-a89c-4e6f-bc80-54748586b5b6.png)
 
-Eli kuvassa on siis vasemmalla puolella virtuaalinen Kali kone ja oikealla pelkästään host (Windows kone) koneen selain, jossa Hack The Box auki. </br>
+Eli kuvassa on siis vasemmalla puolella virtuaalinen Kali kone ja oikealla pelkästään host (Windows kone) koneen selain, jossa Hack The Box auki.
 Kali ei ole verkossa, sillä on pelkästään OpenVPN yhteys Hack The Boxiin ja se pystyy ainoastaan pingaamaan Hack The Boxissa olevan Starting Point koneen osoitetta. </br>
 En ole varma ymmärsinkö lopulta Antin vinkin oikein ja oliko tämä "oikeaoppinen" toteutus tapa, mutta minulla se toimi, niinkuin tehtävänannossa haluttiin, joten olen itse tyytyväinen.
 
