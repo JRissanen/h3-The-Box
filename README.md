@@ -191,7 +191,7 @@ Eli kuvassa on siis vasemmalla puolella virtuaalinen Kali kone ja oikealla pelk�
 Kali ei ole verkossa, sillä on pelkästään OpenVPN yhteys Hack The Boxiin ja se pystyy ainoastaan pingaamaan Hack The Boxissa olevan Starting Point koneen osoitetta. </br>
 En ole varma ymmärsinkö lopulta Antin vinkin oikein ja oliko tämä "oikeaoppinen" toteutus tapa, mutta minulla se toimi, niinkuin tehtävänannossa haluttiin, joten olen itse tyytyväinen.
 
-Lopuksi, koko tämän VPN rumban jälkeen, katsoin sivun säännöt kohdan "Connect to HTB"(punainen tausta) tai "<aktiivinen kohta>" (vihreä tausta, minun kuvassa "STARTING POINT") vieressä olevasta kysymysmerkistä:
+Lopuksi, koko tämän VPN rumban jälkeen, katsoin sivun säännöt kohdan "Connect to HTB" (punainen tausta) tai "<aktiivinen kohta>" (vihreä tausta, minun kuvassa "STARTING POINT") vieressä olevasta kysymysmerkistä:
 
 ![Screenshot 2023-04-21 154320](https://user-images.githubusercontent.com/116954333/233661354-ab371cad-2e3f-4723-ade3-cddec170cb04.png)
  
