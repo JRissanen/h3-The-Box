@@ -139,8 +139,6 @@ Eli oikea ratkaisu olisi ollut syöttää `category` kohdalle parametriksi: `'+O
 Tämä on aiemmista tehtävistä tuttu ratkaisu tapa ja olin itsekin oikeilla jäljillä tehdessäni harjoitusta. </br>
 En vain osannut ilman ratkaisua kirjoittaa oikean muotoista SQL-injektiota oikeaan paikkaan. Tämä siksi, että olen aiemmin tehnyt vain tekstikenttiin hyökkäyksiä, enkä verkkosivun hakukenttiin.
 
-![Screenshot 2023-04-20 183458](https://user-images.githubusercontent.com/116954333/233420293-9aa4c7c7-dbbc-48fa-bd54-91e686d10d75.png)
-
 ![Screenshot 2023-04-20 185030](https://user-images.githubusercontent.com/116954333/233420321-f504b11d-8c42-4dab-b440-cac3f6274b8b.png)
 
 ## b) HTB. Tee HackTheBox.com tunnus. Avaa OpenVPN-yhteys "Starting Point" verkkoon. Estä tunnelin ulkopuolinen liikenne eli liikenne oikeaan Internettiin (vinkit alla). Testaa, että normaali Internet-liikenteesi on estetty.
