@@ -143,17 +143,43 @@ En vain osannut ilman ratkaisua kirjoittaa oikean muotoista SQL-injektiota oikea
 
 ## b) HTB. Tee HackTheBox.com tunnus. Avaa OpenVPN-yhteys "Starting Point" verkkoon. Estä tunnelin ulkopuolinen liikenne eli liikenne oikeaan Internettiin (vinkit alla). Testaa, että normaali Internet-liikenteesi on estetty.
 
-Eli kun tunnus on tehty, ensimmäisenä katsotaan sivun säännöt kohdan "Connect to HTB"(punainen tausta) tai "<aktiivinen kohta>" (vihreä tausta, minun kuvassa "STARTING POINT") vieressä olevasta kysymysmerkistä:
+Kun sain tunnuksen tehtyä, lähdin luomaan Hack The Boxiin VPN yhteyttä, [Tero Karvisen vinkkien mukaan](https://terokarvinen.com/2023/tunkeutumistestaus-2023-kevat/#h3-the-box), kohdasta: "Connect to HTB".
+
+![Screenshot 2023-04-21 145423](https://user-images.githubusercontent.com/116954333/233665049-803205d3-35fd-431e-b68d-49a1b5df3b32.png)
+
+Prosessi oli seuraava: Connect to HTB -> Starting Point -> OpenVPN -> VPN Access: EU-Starting Point, VPN Server: EU-StartingPoint 1 -> Protocol: UDP 1337 -> Download VPN.
+
+![Screenshot 2023-04-21 145532](https://user-images.githubusercontent.com/116954333/233674151-88092108-84ea-448b-8ab2-011b15ae0097.png)
+
+![Screenshot 2023-04-21 145556](https://user-images.githubusercontent.com/116954333/233674173-2b90caa0-46ca-4d3e-acfd-0eb50115b11f.png)
+
+![Screenshot 2023-04-21 145700](https://user-images.githubusercontent.com/116954333/233674189-fa9974b0-0c47-47be-af2e-4ead84bd2ef1.png)
+
+Seuraavaksi piti määrittää "Network Connections" kohdasta juuri lataamani VPN aktiiviseksi. </br>
+Eli: Network Connections -> VPN Connections -> Add a VPN connection... -> Import a saved VPN configuration... (Scroll menun viimeinen kohta) -> Create... -> Open starting_point_omattiedot.ovpn -> Save.
+
+![Screenshot 2023-04-21 145830](https://user-images.githubusercontent.com/116954333/233701145-22127dfd-d5a6-449c-913a-d69d1c357267.png)
+
+![Screenshot 2023-04-21 145916](https://user-images.githubusercontent.com/116954333/233701166-5d25599c-db9f-42f5-a3fe-4c2f065e3250.png)
+
+![Screenshot 2023-04-21 145945](https://user-images.githubusercontent.com/116954333/233701188-8691a0ee-5ac8-4cd9-94e1-17aa8b689564.png)
+
+![Screenshot 2023-04-21 150014](https://user-images.githubusercontent.com/116954333/233701202-30a02694-62ce-4bbc-8bfa-b832a4a4ac39.png)
+
+![Screenshot 2023-04-21 150121](https://user-images.githubusercontent.com/116954333/233701220-d0aafc07-883c-44d6-abed-b48bb42b4c99.png)
+
+Nyt 
+
+
+Seuraavaksi katsoin sivun säännöt kohdan "Connect to HTB"(punainen tausta) tai "<aktiivinen kohta>" (vihreä tausta, minun kuvassa "STARTING POINT") vieressä olevasta kysymysmerkistä:
 
 ![Screenshot 2023-04-21 154320](https://user-images.githubusercontent.com/116954333/233661354-ab371cad-2e3f-4723-ade3-cddec170cb04.png)
  
- Otetaan säännöistä kuvankaappaus talteen.
+ Otin säännöistä kuvankaappauksen talteen.
  
  ![Screenshot 2023-04-21 154510](https://user-images.githubusercontent.com/116954333/233661489-edcd002e-3cf5-4816-b414-6286922a6cbe.png)
 
-Kohdan: "6. Streaming" tekstin perusteella voimme päätellä, että "Starting Point Machines" koneiden ratkaisut saa julkaista vapaasti.
- 
- Seuraavaksi luodaan VPN yhteys Hack The Boxiin.
+Kohdan: "6. Streaming" tekstin perusteella päättelin, että "Starting Point Machines" koneiden ratkaisut saa julkaista vapaasti.
  
  
 
