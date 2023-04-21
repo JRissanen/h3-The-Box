@@ -180,7 +180,6 @@ Eli tähän asti olen tehnyt kaiken virtuaalisella Kali hyökkäyskoneellani. </
 
 
 
-
 Seuraavaksi katsoin sivun säännöt kohdan "Connect to HTB"(punainen tausta) tai "<aktiivinen kohta>" (vihreä tausta, minun kuvassa "STARTING POINT") vieressä olevasta kysymysmerkistä:
 
 ![Screenshot 2023-04-21 154320](https://user-images.githubusercontent.com/116954333/233661354-ab371cad-2e3f-4723-ade3-cddec170cb04.png)
