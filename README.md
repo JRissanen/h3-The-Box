@@ -169,18 +169,29 @@ Eli: Network Connections -> VPN Connections -> Add a VPN connection... -> Import
 ![Screenshot 2023-04-21 150121](https://user-images.githubusercontent.com/116954333/233701220-d0aafc07-883c-44d6-abed-b48bb42b4c99.png)
 
 Nyt minulla on siis Kali hyökkäyskoneellani OpenVPN yhteys (olemassa, ei vielä aktiivinen) Hack The Box Starting Point koneisiin. </br>
-OpenVPN yhteyden sain aktiiviseksi menemällä normaalikäyttäjänä hakemistoon, jossa OpenVPN tiedosto oli ja antamalla komennon: `sudo su` (ja salasanan). Näin pääsin ajamaan pääkäyttäjänä (root) komennon `openvpn starting_point_JRissanen.ovpn`, joka aktivoi OpenVPN yhteyden. 
+OpenVPN yhteyden sain aktiiviseksi menemällä normaalikäyttäjänä hakemistoon, jossa OpenVPN tiedosto oli ja antamalla komennon: `sudo su` (ja salasanan). Näin pääsin ajamaan pääkäyttäjänä (root) komennon `openvpn starting_point_JRissanen.ovpn`, joka aktivoi OpenVPN yhteyden. OpenVPN siis vaatii toimiakseen root-oikeudet luodakseen `tun` (tunnel interface) yhteydet. (askUbuntu. 2016).
 
+Kun OpenVPN yhteys on onnistuneesti aktivoitu, niin tulosteen viimeisellä rivillä lukee: `<päivämäärä & aika> Initialization Sequence Completed` ja itse sain ilmoituksen "VPN Login Message", että yhteys on muodostettu onnistuneeseti.
 
+![Screenshot 2023-04-21 153131](https://user-images.githubusercontent.com/116954333/233709305-52b3e45d-1e4f-48ec-909c-c9ba1dc25518.png)
+
+![Screenshot 2023-04-21 151640](https://user-images.githubusercontent.com/116954333/233709335-9d926a6c-2c17-4a7e-b66d-b4f833bd5ce5.png)
 
 Seuraavaksi minulla kesti ymmärtää, miten saan tehtävät tehtyä siten, että hyökkäyskoneeni ei ole yhteydessä Internettiin, vaan pelkästään VPN:än välityksellä yhteydessä Hack The Box koneeseen. </br>
-Kurssilaiseni [Antti Halonen](https://github.com/therealhalonen/penetration_testing) neuvoi pitämään Hack The Boxin auki host koneella ja ottamalla virtuaalisella Kali hyökkäyskoneella VPN yhteyden host koneen Hack The Box koneeseen.
 
-Eli tähän asti olen tehnyt kaiken virtuaalisella Kali hyökkäyskoneellani. </br>
+Eli tähän asti olen tehnyt kaiken virtuaalisella Kali hyökkäyskoneellani ja siksi kun laitoin VPN yhteyden päälle, niin en saanut enää verkkoyhteyttä Kali koneellani, joten luonnollisesti Hack The Box verkkosivukin kaatui, enkä pystynyt tekemään Starting Point tehtäviä. </br>
 
+Kurssilaiseni [Antti Halonen](https://github.com/therealhalonen/penetration_testing) neuvoi pitämään Hack The Boxin auki host koneella ja ottamalla virtuaalisella Kali hyökkäyskoneella VPN yhteyden host koneen Hack The Box koneeseen, jolloin vain host kone (tässä tapauksessa siis oma Windows koneeni, jolla pyöritän virtuaalista Kali hyökkäyskonettani Virtual Boxissa) on kiinni verkossa ja pystyn tekemään tehtävät. Prosessi on aika vaikea selittää auki siten, että siitä saa selvää muutkin...
 
+Yritän vielä havainnollistaa seuraavalla kuvankaappauksella:
 
-Seuraavaksi katsoin sivun säännöt kohdan "Connect to HTB"(punainen tausta) tai "<aktiivinen kohta>" (vihreä tausta, minun kuvassa "STARTING POINT") vieressä olevasta kysymysmerkistä:
+![Screenshot 2023-04-21 175724](https://user-images.githubusercontent.com/116954333/233710273-cc95de3b-a89c-4e6f-bc80-54748586b5b6.png)
+
+Eli kuvassa on siis vasemmalla puolella virtuaalinen Kali kone ja oikealla pelkästään host (Windows kone) koneen selain, jossa Hack The Box auki. </br>
+Kali ei ole verkossa, sillä on pelkästään OpenVPN yhteys Hack The Boxiin ja se pystyy ainoastaan pingaamaan Hack The Boxissa olevan Starting Point koneen osoitetta. </br>
+En ole varma ymmärsinkö lopulta Antin vinkin oikein ja oliko tämä "oikeaoppinen" toteutus tapa, mutta minulla se toimi, niinkuin tehtävänannossa haluttiin, joten olen itse tyytyväinen.
+
+Lopuksi, koko tämän VPN rumban jälkeen, katsoin sivun säännöt kohdan "Connect to HTB"(punainen tausta) tai "<aktiivinen kohta>" (vihreä tausta, minun kuvassa "STARTING POINT") vieressä olevasta kysymysmerkistä:
 
 ![Screenshot 2023-04-21 154320](https://user-images.githubusercontent.com/116954333/233661354-ab371cad-2e3f-4723-ade3-cddec170cb04.png)
  
@@ -189,6 +200,8 @@ Seuraavaksi katsoin sivun säännöt kohdan "Connect to HTB"(punainen tausta) ta
  ![Screenshot 2023-04-21 154510](https://user-images.githubusercontent.com/116954333/233661489-edcd002e-3cf5-4816-b414-6286922a6cbe.png)
 
 Kohdan: "6. Streaming" tekstin perusteella päättelin, että "Starting Point Machines" koneiden ratkaisut saa julkaista vapaasti.
+ 
+## c) Meow. Käynnistä "Starting point": "Meow". (Spawn machine). Tallenna ruutukaappaus sivusta, jossa näkyy koneen osoite ja tunkeutumistehtäviä. Porttiskannaa kone ja analysoi tulokset. Suorita HTB:n antamat tehtävät. Raportoi normaalisti, "Starting point" -koneista saa julkaista läpikävelyohjeita.
  
  
 
@@ -221,7 +234,7 @@ https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data </br
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/101?utm_source=mozilla&utm_medium=devtools-netmonitor&utm_campaign=default </br>
 https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API </br>
 https://github.com/therealhalonen/penetration_testing </br>
-
+https://askubuntu.com/questions/100986/any-reason-not-to-start-openvpn-as-root </br>
 
 
 
