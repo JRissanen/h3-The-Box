@@ -145,6 +145,20 @@ En vain osannut ilman ratkaisua kirjoittaa oikean muotoista SQL-injektiota oikea
 
 ## b) HTB. Tee HackTheBox.com tunnus. Avaa OpenVPN-yhteys "Starting Point" verkkoon. Estä tunnelin ulkopuolinen liikenne eli liikenne oikeaan Internettiin (vinkit alla). Testaa, että normaali Internet-liikenteesi on estetty.
 
+Eli kun tunnus on tehty, ensimmäisenä katsotaan sivun säännöt kohdan "Connect to HTB"(punainen tausta) tai "<aktiivinen kohta>" (vihreä tausta, minun kuvassa "STARTING POINT") vieressä olevasta kysymysmerkistä:
+
+![Screenshot 2023-04-21 154320](https://user-images.githubusercontent.com/116954333/233661354-ab371cad-2e3f-4723-ade3-cddec170cb04.png)
+ 
+ Otetaan säännöistä kuvankaappaus talteen.
+ 
+ ![Screenshot 2023-04-21 154510](https://user-images.githubusercontent.com/116954333/233661489-edcd002e-3cf5-4816-b414-6286922a6cbe.png)
+
+Kohdan: "6. Streaming" tekstin perusteella voimme päätellä, että "Starting Point Machines" koneiden ratkaisut saa julkaista vapaasti.
+ 
+ Seuraavaksi luodaan VPN yhteys Hack The Boxiin.
+ 
+ 
+
 
 
 
