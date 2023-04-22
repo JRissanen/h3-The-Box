@@ -314,14 +314,28 @@ Kolmanteenkin kysymykseen sai samalla tulostuksella vastauksen, eli mikä on por
 
 Neljäs kysymys oli, että millä komennolla SMB työkalu listaa tiedot. </br>
 Vastauskentässä näky, että komento on kaksimerkkinen, joten kokeilin `ls` ja `la`, mutta ne olivat väärin. </br>
-Katsoin vinkin ja siinä neuvottiin käyttämään `-` ja sanan "list" lyhennettä, joten ratkaisu oli siis `-l`. </br>
+Katsoin vinkin ja siinä neuvottiin käyttämään `-` ja sanan "list" lyhennettä, joten ratkaisu oli siis `-L`. </br>
 ![Screenshot 2023-04-22 153915](https://user-images.githubusercontent.com/116954333/233785386-b8b35ef1-33cf-419d-9470-895a897b2030.png) </br>
 ![Screenshot 2023-04-22 154315](https://user-images.githubusercontent.com/116954333/233785409-ab6f631f-ca14-480f-aa97-a6f354a0c70a.png)
 
+Viides kysymys oli, että kuinka monta sharea on HTB:n Dancing starting osiossa. </br>
+En ollut varma, miten SMB työkalua käytetään, joten lähdin kokeilemaan/selvittämään asiaa. </br>
+Kokeilin ensin komennolla, `smb 10.129.6.157`, mutta sitä ei löytynyt ja terminaali tarjosi sen sijaan eri vaihtoehtoja. </br>
+Vaihtoehdoista löytyi "smbd from deb samba", joka näytti mielenkiintoiselta, joten koitin `smbd 10.129.6.157`, mutta mitään ei tapahtunut. </br>
+Sitten koitin katsoa apua komennolla `smbd -h`, mutta se ei toiminut, niin avasin smbd:n manuaali sivut komennolla `man smbd`. </br>
+![Screenshot 2023-04-22 155607](https://user-images.githubusercontent.com/116954333/233792564-a7f513f9-4bda-4408-a56d-3799578a0b58.png)
 
+Kyseessä oli siis SMB serveri. Sitä en itse tarvitse, joten selasin manuaalin loppuun, "See also" osioon. </br>
+Sieltä kolmas vaihtoehto oli "smbclient", joka kuulosti tutulta, joten otin seuraavaksi komennolla `man smbclient` enemmän infoa esille. </br>
+![Screenshot 2023-04-22 155857](https://user-images.githubusercontent.com/116954333/233792712-6c76f3ab-ca0e-46fb-ade7-3ce3a090bd80.png)
 
+Heti ensimmäinen rivi: "ftp-like client..." kuulosti juuri siltä, mitä tehtävässä halutaan käytettävän. </br>
+Kokeilin siis seuraavaksi komentoa: `smbclient 10.129.6.157`, ja salasanaa kysyessä laitoin "root", mutta tulostus oli seuraava: </br>
+![Screenshot 2023-04-22 155857](https://user-images.githubusercontent.com/116954333/233792961-7a63d500-bc12-4b98-87d1-63f04a6c3ba1.png)
 
-
+Tulostusta tulkitessa, en siis laittanut tarpeeksi montaa `\` merkkiä... </br>
+Koitin edellisen kohdan `-L` parametria, eli: `smbclient -L 10.129.6.157` ja salasana taas "root", tulostus oli erilainen: </br>
+![Screenshot 2023-04-22 183631](https://user-images.githubusercontent.com/116954333/233793558-12a22cdd-03a3-4b1f-a11f-b7c4d80ec534.png)
 
 
 
