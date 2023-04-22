@@ -387,3 +387,6 @@ https://github.com/therealhalonen/penetration_testing </br>
 https://askubuntu.com/questions/100986/any-reason-not-to-start-openvpn-as-root </br>
 https://www.techtarget.com/searchnetworking/tip/Understanding-the-FTP-PORT-command#:~:text=You%20may%20already%20know%20that,TCP%20port%2021%20by%20default. </br>
 https://stackoverflow.com/questions/3936911/how-can-i-login-anonymously-with-ftp-usr-bin-ftp </br>
+blob:https://app.hackthebox.com/b34f915c-4488-4fe0-9dbc-3006242f40db
+
+
