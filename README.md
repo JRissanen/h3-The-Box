@@ -301,7 +301,7 @@ Annoin komennon `exit`, jolla sain katkaistua FTP yhteyden, ja sen jälkeen taas
 
 ## e) Dancing. Ratkaise Dancing. (HTB Starting point)
 
-Aloitin taas spawnaamalla koneen.
+Aloitin taas spawnaamalla koneen. </br>
 ![Screenshot 2023-04-22 151152](https://user-images.githubusercontent.com/116954333/233783973-20c05595-16e6-49e7-864a-99df9abed078.png)
 
 Ensimmäinen kysymys oli, että mikä on SMB:n koko nimi. Googlasin ja löysin [Microsoftin artikkelin](https://learn.microsoft.com/en-us/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) aiheesta. </br>
