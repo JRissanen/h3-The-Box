@@ -215,7 +215,7 @@ Ensimmäinen kysymys oli, että mitä tarkoittaa VM. VM on yleinen lyhennys sana
 Toisessa kysymyksessä kysyttiin työkalua, jonka avulla voi ajaa komentoja komentoriviltä ja jota kutsutaan myös shelliksi tai konsoliksi. Oikea vastaus on terminaali ja sen opin jo ensimmäisellä tunnilla Linux palvelimet kurssilla. </br>
 ![Screenshot 2023-04-22 112418](https://user-images.githubusercontent.com/116954333/233772556-18b93cab-7253-4cc8-a91e-ea883ef908d4.png)
 
-Kolmannessa kysymyksessä kysyttiin, mitä VPN:ää Hack The Boxissa käytetään ja kun sitä eilen laitoin pystyyn, niin tiedän, että vastaus on OpenVPN.
+Kolmannessa kysymyksessä kysyttiin, mitä VPN:ää Hack The Boxissa käytetään ja kun sitä eilen laitoin pystyyn, niin tiedän, että vastaus on OpenVPN. </br>
 ![Screenshot 2023-04-22 112609](https://user-images.githubusercontent.com/116954333/233772699-832c647b-1970-4410-98bd-3134a207dfcf.png)
 
 Neljännessä kysymyksessä kysyttiin "tunnel interface" lyhennettä. OpenVPN käyttää tätä myös ja jos ajan terminaalissa komennon `ifconfig` (kun openvpn on päällä), niin näen OpenVPN:än luoman tunnelin nimellä: `tun0`, joten oikea vastaus on tun. </br>
