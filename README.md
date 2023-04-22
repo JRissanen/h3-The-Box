@@ -351,7 +351,7 @@ En saanut oikeaa komentoa pääteltyä `--usage` tulostuksesta, tai mistään mu
 ![Screenshot 2023-04-22 195007](https://user-images.githubusercontent.com/116954333/233796834-22836b5c-7277-4475-b2c6-71e1bd5c39a5.png)
 
 En oikeastaan tiedä, että mistä tulee neljä `\` merkkiä kohde osoitteen eteen ja kaksi ennen "WorkShares" kohtaa, mutta ainakin sen suhteen olin oikeassa, että kohde share oli juuri "WorkShares". </br>
-![Screenshot 2023-04-22 195007](https://user-images.githubusercontent.com/116954333/233796925-b834bc3c-30e0-419c-9f70-f1ceea5a5caf.png)
+![Screenshot 2023-04-22 195627](https://user-images.githubusercontent.com/116954333/233798916-bbf3eeb7-2ed5-474e-a1c3-eeea4c668d56.png)
 
 Seitsemäs kysymys oli, että millä komennolla saa SMB shellin sisällä ladattua tiedostoja. </br>
 Heti kun pääsi "WorkShares" shareen kirjautumaan tuli teksti "Try "help" to get a list of possible commands.", joten annoin komennon: `help` ja terminaaliin aukesi lista komentoja. </br>
