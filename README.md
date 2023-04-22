@@ -314,7 +314,7 @@ Kolmanteenkin kysymykseen sai samalla tulostuksella vastauksen, eli mikä on por
 
 Neljäs kysymys oli, että millä komennolla SMB työkalu listaa tiedot. </br>
 Vastauskentässä näky, että komento on kaksimerkkinen, joten kokeilin `ls` ja `la`, mutta ne olivat väärin. </br>
-Katsoin vinkin ja siinä neuvottiin käyttämään `-` ja sanan "list" lyhennettä, joten ratkaisu oli siis `-L`. </br>
+Katsoin vinkin ja siinä neuvottiin käyttämään `-` ja sanan "list" lyhennettä, joten ratkaisu oli siis `-l`. </br>
 ![Screenshot 2023-04-22 153915](https://user-images.githubusercontent.com/116954333/233785386-b8b35ef1-33cf-419d-9470-895a897b2030.png) </br>
 ![Screenshot 2023-04-22 154315](https://user-images.githubusercontent.com/116954333/233785409-ab6f631f-ca14-480f-aa97-a6f354a0c70a.png)
 
@@ -336,18 +336,42 @@ Kokeilin siis seuraavaksi komentoa: `smbclient 10.129.6.157`, ja salasanaa kysye
 ![Screenshot 2023-04-22 182102](https://user-images.githubusercontent.com/116954333/233793774-2659845b-ff06-4997-b849-ac008eb05821.png)
 
 Tulostusta tulkitessa, en siis laittanut tarpeeksi montaa `\` merkkiä... </br>
-Koitin edellisen kohdan `-L` parametria, eli: `smbclient -L 10.129.6.157` ja salasana taas "root", tulostus oli erilainen: </br>
+Koitin edellisen kohdan `-l` parametria, eli: `smbclient -l 10.129.6.157` ja salasana taas "root", mutta se antoi vain samaa tulostusta. </br>
+Katsoin vinkkiä ja siinä neuvottiin käyttämään `-L` eli isoa kirjainta, joten koitin `smbclient -L 10.129.6.157` ja tulostus oli seuraava: </br>
 ![Screenshot 2023-04-22 183631](https://user-images.githubusercontent.com/116954333/233793558-12a22cdd-03a3-4b1f-a11f-b7c4d80ec534.png)
 
+Tulostuksesta päätellen, Dancing koneella olisi neljä sharea, ja se oli oikea vastaus. </br>
+![Screenshot 2023-04-22 193224](https://user-images.githubusercontent.com/116954333/233796079-300e8fdd-fb9d-4806-95b5-95d29fa99577.png)
 
+!!! Dancing koneen ip-osoite on taas tässä vaiheessa vaihtunut, koska pidin taukoa tehtävien välissä. Se on tällä hetkellä 10.129.238.218. !!!
 
+Kuudennessa kysymyksessä piti selvittää, mihin näistä neljästä sharesta pääsee sisälle tyhjällä salasanalla. </br>
+Päättelin, että se olisi "WorkShares", koska se on ainoa, joka ei lopu "$" merkkiin, mutta en tiedä mikä on oikea komento... </br>
+En saanut oikeaa komentoa pääteltyä `--usage` tulostuksesta, tai mistään muustakaan, joten avasin Dancing koneen [Walk Through ohjeet](blob:https://app.hackthebox.com/b34f915c-4488-4fe0-9dbc-3006242f40db) ja siellä neuvottiin seuraava: </br>
+![Screenshot 2023-04-22 195007](https://user-images.githubusercontent.com/116954333/233796834-22836b5c-7277-4475-b2c6-71e1bd5c39a5.png)
 
+En oikeastaan tiedä, että mistä tulee neljä `\` merkkiä kohde osoitteen eteen ja kaksi ennen "WorkShares" kohtaa, mutta ainakin sen suhteen olin oikeassa, että kohde share oli juuri "WorkShares". </br>
+![Screenshot 2023-04-22 195007](https://user-images.githubusercontent.com/116954333/233796925-b834bc3c-30e0-419c-9f70-f1ceea5a5caf.png)
 
+Seitsemäs kysymys oli, että millä komennolla saa SMB shellin sisällä ladattua tiedostoja. </br>
+Heti kun pääsi "WorkShares" shareen kirjautumaan tuli teksti "Try "help" to get a list of possible commands.", joten annoin komennon: `help` ja terminaaliin aukesi lista komentoja. </br>
+Komentolistasta löytyi mm. `get` komento, joka toimi myös FTP:n kanssa, niin kokeilin sitä ja se oli oikea vastaus. </br>
+![Screenshot 2023-04-22 195627](https://user-images.githubusercontent.com/116954333/233797556-776350c6-abfc-4185-928f-552bda8accca.png)
 
+Kahdeksas ja viimeinen kysymys oli taas root flagin syöttäminen. </br>
+Aiemmin `help` komennolla listaamissani komennoissa näkyi myös `ls` listaus komento, joten syötin sen ja sain seuraavan näkymän:</br>
+![Screenshot 2023-04-22 202013](https://user-images.githubusercontent.com/116954333/233798001-1a871c1e-c761-4442-b445-9e393e95fc1a.png)
 
+Menin komennolla `smb: \> cd Amy.J\` tämän "Amy. J" käyttäjän tiedostoja tutkimaan ja sain ne näkyville komennolla `ls`. </br>
+Latasin Amyn "worknotes.txt" tiedoston komennolla `get worknotes.txt` ja palasin `cd ..` komennolla taikaisin, ja menin seuraavaksi samoilla komennoilla "James. P" tiedostoihin. </br>
+Latasin James käyttäjältä "flag.txt" tiedoston komennolla `get flag.txt` ja poistuin SMB shellistä `exit` komennolla. </br>
+Sitten vain `cat flag.txt` ja sisällön kopiointi ja sen jälkeen syöttäminen Dancing koneen kahdeksannen kysymyksen kysymyskenttään ja näin sain kaikki Starting Point koneet läpäistyiksi. </br>
 
+![Screenshot 2023-04-22 203151](https://user-images.githubusercontent.com/116954333/233798625-e0ea0587-eee0-4f11-9844-c49fd228e50e.png)
 
+![Screenshot 2023-04-22 203249](https://user-images.githubusercontent.com/116954333/233798631-0b72e25d-97fc-4e2d-8255-bb0edeea9906.png)
 
+![Screenshot 2023-04-22 203346](https://user-images.githubusercontent.com/116954333/233798637-1bae4853-5ebb-47bc-9291-863d4b66f53e.png)
 
 
 ## Lähteet
@@ -363,16 +387,3 @@ https://github.com/therealhalonen/penetration_testing </br>
 https://askubuntu.com/questions/100986/any-reason-not-to-start-openvpn-as-root </br>
 https://www.techtarget.com/searchnetworking/tip/Understanding-the-FTP-PORT-command#:~:text=You%20may%20already%20know%20that,TCP%20port%2021%20by%20default. </br>
 https://stackoverflow.com/questions/3936911/how-can-i-login-anonymously-with-ftp-usr-bin-ftp </br>
-
-
-
-
-
-
-
-
-
-
-
-
-
