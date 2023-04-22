@@ -252,9 +252,11 @@ Otin yhteyden komennolla: `telnet 10.129.1.17` ja siitä aukesi Hack The Box sis
 
 Nyt pitää enää selvittää, miten root flagin saa selville. </br>
 Minulla ei ollut aikaisempaa tietoa root flagistä, mutta tehtävä olikin tehty varsin helpoksi ja root flag oli tallennettu heti ensimmäiseen näkymään nimellä "flag.txt" ja löysin sen puoli vahingossa, koska ensimmäinen komento, jonka ajoin päästyäni sisään oli listauskomento `ls`. </br>
-Lopuksi piti vain saada tiedoston sisältö näkyviin ja se onnistui komennolla `cat flag.txt`, jonka jälkeen tarvitsi vain kopioida ja liittää root flag HTB:n Meow koneen yhdeksänne kysymyksen kysymyskenttään.
+Lopuksi piti vain saada tiedoston sisältö näkyviin ja se onnistui komennolla `cat flag.txt`, jonka jälkeen tarvitsi vain kopioida ja liittää root flag HTB:n Meow koneen yhdeksännen kysymyksen kysymyskenttään.
 
 ![Screenshot 2023-04-22 122834](https://user-images.githubusercontent.com/116954333/233775801-658a4526-a887-4d0e-bfcf-ceba5d3a7f69.png)
+
+Eipä tämän tehtävän tekemiseen olisi edes metasploitablea tarvinnut, mutta eipä sen käyttämisestä haittaakaan ollut.
 
 ## d) Fawn. Ratkaise Fawn. (HTB Starting point)
 
