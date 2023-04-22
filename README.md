@@ -333,7 +333,7 @@ Sieltä kolmas vaihtoehto oli "smbclient", joka kuulosti tutulta, joten otin seu
 
 Heti ensimmäinen rivi: "ftp-like client..." kuulosti juuri siltä, mitä tehtävässä halutaan käytettävän. </br>
 Kokeilin siis seuraavaksi komentoa: `smbclient 10.129.6.157`, ja salasanaa kysyessä laitoin "root", mutta tulostus oli seuraava: </br>
-![Screenshot 2023-04-22 155857](https://user-images.githubusercontent.com/116954333/233792961-7a63d500-bc12-4b98-87d1-63f04a6c3ba1.png)
+![Screenshot 2023-04-22 182102](https://user-images.githubusercontent.com/116954333/233793774-2659845b-ff06-4997-b849-ac008eb05821.png)
 
 Tulostusta tulkitessa, en siis laittanut tarpeeksi montaa `\` merkkiä... </br>
 Koitin edellisen kohdan `-L` parametria, eli: `smbclient -L 10.129.6.157` ja salasana taas "root", tulostus oli erilainen: </br>
