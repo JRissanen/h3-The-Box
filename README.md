@@ -326,6 +326,8 @@ Sitten koitin katsoa apua komennolla `smbd -h`, mutta se ei toiminut, niin avasi
 ![Screenshot 2023-04-22 155607](https://user-images.githubusercontent.com/116954333/233792564-a7f513f9-4bda-4408-a56d-3799578a0b58.png)
 
 Kyseessä oli siis SMB serveri. Sitä en itse tarvitse, joten selasin manuaalin loppuun, "See also" osioon. </br>
+![Screenshot 2023-04-22 155755](https://user-images.githubusercontent.com/116954333/233793670-cccabd90-4a76-46f3-8135-5fb5566ae03d.png)
+
 Sieltä kolmas vaihtoehto oli "smbclient", joka kuulosti tutulta, joten otin seuraavaksi komennolla `man smbclient` enemmän infoa esille. </br>
 ![Screenshot 2023-04-22 155857](https://user-images.githubusercontent.com/116954333/233792712-6c76f3ab-ca0e-46fb-ade7-3ce3a090bd80.png)
 
