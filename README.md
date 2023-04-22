@@ -181,7 +181,7 @@ Seuraavaksi minulla kesti ymmärtää, miten saan tehtävät tehtyä siten, ett�
 
 Eli tähän asti olen tehnyt kaiken virtuaalisella Kali hyökkäyskoneellani ja siksi kun laitoin VPN yhteyden päälle, niin en saanut enää verkkoyhteyttä Kali koneellani, joten luonnollisesti Hack The Box verkkosivukin kaatui, enkä pystynyt tekemään Starting Point tehtäviä. </br>
 
-Kurssilaiseni [Antti Halonen](https://github.com/therealhalonen/penetration_testing) neuvoi pitämään Hack The Boxin auki host koneella ja ottamalla virtuaalisella Kali hyökkäyskoneella VPN yhteyden host koneen Hack The Box koneeseen, jolloin vain host kone (tässä tapauksessa siis oma Windows koneeni, jolla pyöritän virtuaalista Kali hyökkäyskonettani Virtual Boxissa) on kiinni verkossa ja pystyn tekemään tehtävät. Prosessi on aika vaikea selittää auki siten, että siitä saa selvää muutkin...
+Kurssilaiseni [Antti Halonen](https://github.com/therealhalonen/penetration_testing) neuvoi pitämään Hack The Boxin auki host koneella ja ottamalla virtuaalisella Kali hyökkäyskoneella VPN yhteyden host koneen Hack The Box koneeseen, jolloin vain host kone (tässä tapauksessa siis oma Windows koneeni, jolla pyöritän virtuaalista Kali hyökkäyskonettani Virtual Boxissa) on kiinni verkossa ja pystyn tekemään tehtävät.
 
 Yritän vielä havainnollistaa seuraavalla kuvankaappauksella:
 
@@ -203,9 +203,37 @@ Kohdan: "6. Streaming" tekstin perusteella päättelin, että "Starting Point Ma
  
 ## c) Meow. Käynnistä "Starting point": "Meow". (Spawn machine). Tallenna ruutukaappaus sivusta, jossa näkyy koneen osoite ja tunkeutumistehtäviä. Porttiskannaa kone ja analysoi tulokset. Suorita HTB:n antamat tehtävät. Raportoi normaalisti, "Starting point" -koneista saa julkaista läpikävelyohjeita.
  
+Päivä on vaihtunut edellisistä tehtävistä, joten ip-osoitteetkin ovat osittain muuttuneet.
  
+Sain Meow koneen spawnattua ja sen ip-osoiten oli: 10.129.1.17.
+ 
+![Screenshot 2023-04-22 111434](https://user-images.githubusercontent.com/116954333/233772126-33fb8b0e-1af5-4698-aadf-562771d1d90a.png)
 
+Ensimmäinen kysymys oli, että mitä tarkoittaa VM. VM on yleinen lyhennys sanalle Virtual Machine, eli virtuaalikone, joten vastasin sen ja se oli oikein. </br>
+![Screenshot 2023-04-22 112024](https://user-images.githubusercontent.com/116954333/233772318-9ea181dc-9283-47df-8c72-e539046b6e4d.png)
 
+Toisessa kysymyksessä kysyttiin työkalua, jonka avulla voi ajaa komentoja komentoriviltä ja jota kutsutaan myös shelliksi tai konsoliksi. Oikea vastaus on terminaali ja sen opin jo ensimmäisellä tunnilla Linux palvelimet kurssilla. </br>
+![Screenshot 2023-04-22 112418](https://user-images.githubusercontent.com/116954333/233772556-18b93cab-7253-4cc8-a91e-ea883ef908d4.png)
+
+Kolmannessa kysymyksessä kysyttiin, mitä VPN:ää Hack The Boxissa käytetään ja kun sitä eilen laitoin pystyyn, niin tiedän, että vastaus on OpenVPN.
+![Screenshot 2023-04-22 112609](https://user-images.githubusercontent.com/116954333/233772699-832c647b-1970-4410-98bd-3134a207dfcf.png)
+
+Neljännessä kysymyksessä kysyttiin "tunnel interface" lyhennettä. OpenVPN käyttää tätä myös ja jos ajan terminaalissa komennon `ifconfig` (kun openvpn on päällä), niin näen OpenVPN:än luoman tunnelin nimellä: `tun0`, joten oikea vastaus on tun. </br>
+![Screenshot 2023-04-22 113001](https://user-images.githubusercontent.com/116954333/233772859-58dc404b-e8e6-4f33-a35c-52f41c1bfbd4.png)
+
+Viidennessä kysymyksessä kysyttiin työkalua, joka lähettää kohteeseen ICMP echo pyyntöjä. Olen itse käyttänyt vain `ping` komentoa kun olen lähettänyt näitä pyyntöjä, joten vastasin sen ja se oli oikein. </br>
+![Screenshot 2023-04-22 113305](https://user-images.githubusercontent.com/116954333/233773009-b7cb2f26-826a-47ce-84b4-2e6a32e3c9a3.png)
+
+Kuudennessa kysymyksessä kysyttiin yleisintä porttiskanneri työkalua ja sen on opettanut Tero jo moneen otteseen tällä kurssilla olevan `nmap`. </br>
+![Screenshot 2023-04-22 113414](https://user-images.githubusercontent.com/116954333/233773183-c57a0938-8630-486a-b777-05bf2fda7c7e.png)
+
+Setsemmännessä kysymyksessä kysyttiin, että mikä palvelu näkyy käyttävän porttia 23/tcp kun skannataan jokin osoite ja olen sen aiemmista tehtävistä oppinut olevan telnet. </br>
+![Screenshot 2023-04-22 113650](https://user-images.githubusercontent.com/116954333/233773262-0afbdc58-762f-4413-8f67-9292e6d3a85d.png)
+
+Kahdeksannessa kysymyksessä kysyttiin käyttäjää, joka pystyy kirjautumaan telnettiin ilman salasanaa, eli pääkäyttäjä/root. </br>
+![Screenshot 2023-04-22 114006](https://user-images.githubusercontent.com/116954333/233773409-608bd271-e81e-4e04-9514-62c248e44d73.png)
+
+Yhdeksännessä tehtävässä pyydettiin sitten root-flagia, eli pitää käyttää hyökkäys koneessa nyt kaikkea, mitä aikaisemmat kahdeksan kysymystä opettivat.
 
 
 
