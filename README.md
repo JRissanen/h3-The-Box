@@ -233,10 +233,30 @@ Setsemmännessä kysymyksessä kysyttiin, että mikä palvelu näkyy käyttävä
 Kahdeksannessa kysymyksessä kysyttiin käyttäjää, joka pystyy kirjautumaan telnettiin ilman salasanaa, eli pääkäyttäjä/root. </br>
 ![Screenshot 2023-04-22 114006](https://user-images.githubusercontent.com/116954333/233773409-608bd271-e81e-4e04-9514-62c248e44d73.png)
 
-Yhdeksännessä tehtävässä pyydettiin sitten root-flagia, eli pitää käyttää hyökkäys koneessa nyt kaikkea, mitä aikaisemmat kahdeksan kysymystä opettivat.
+Yhdeksännessä tehtävässä pyydettiin sitten root flagia, eli pitää käyttää hyökkäys koneessa nyt kaikkea, mitä aikaisemmat kahdeksan kysymystä opettivat. </br>
+Koska aiemmissa kysymyksissä mainittiin telnet, niin ajattelin tehtävän olevan pitkälti samanlainen kuin ihan ensimmäisessä kurssin harjoituksessa tekemäni hyökkäys metasploitableen, joten lähdin liikkeelle samalla tavalla. </br>
+Koska tehtävissäkin kävi ilmi, että telnettiin saa root-käyttäjänä yhteyden ilman sen kummempaa tunnistautumista, niin käytän tehtävän tekemiseen Kalin root-terminaalia.
 
+Ensimmäiseksi käynnistin metasploitablen komennolla: `msfdb run`. </br>
+Sitten lisäsin uuden workspacen komennolla: `workspace --add HTBMeow`. </br>
+Varmistin vielä, että HTB(Hack The Box) kone vastaa `ping` pyyntöön sekä että google ei vastaa, jolloin olen turvallisessa ympäristössä.
 
+![Screenshot 2023-04-22 120123](https://user-images.githubusercontent.com/116954333/233774545-3df677ed-d525-4146-915e-68a1360e5e14.png)
 
+Seuraavaksi porttiskannasin HTB koneen osoitteen komennolla: `db_nmap 10.129.1.17`. </br>
+Sain tuloksen, että portti 23/tcp telnet on auki. </br>
+![Screenshot 2023-04-22 120621](https://user-images.githubusercontent.com/116954333/233774693-ea53b303-5b98-445a-a7b5-9abcb596ae94.png)
+
+Otin yhteyden komennolla: `telnet 10.129.1.17` ja siitä aukesi Hack The Box sisäänkirjautumisnäkymä. </br> Tehtävissä oli puhuttu, ettei root-käyttäjä tarvitsisi salasanaa, joten kirjoitin "Meow login" kohtaan: "root" ja sehän toimi ja pääsin sisään. </br>
+![Screenshot 2023-04-22 121720](https://user-images.githubusercontent.com/116954333/233775269-37216012-3235-4470-ba60-4a29423f638d.png)
+
+Nyt pitää enää selvittää, miten root flagin saa selville. </br>
+Minulla ei ollut aikaisempaa tietoa root flagistä, mutta tehtävä olikin tehty varsin helpoksi ja root flag oli tallennettu heti ensimmäiseen näkymään nimellä "flag.txt" ja löysin sen puoli vahingossa, koska ensimmäinen komento, jonka ajoin päästyäni sisään oli listauskomento `ls`. </br>
+Lopuksi piti vain saada tiedoston sisältö näkyviin ja se onnistui komennolla `cat flag.txt`, jonka jälkeen tarvitsi vain kopioida ja liittää root flag HTB:n Meow koneen yhdeksänne kysymyksen kysymyskenttään.
+
+![Screenshot 2023-04-22 122834](https://user-images.githubusercontent.com/116954333/233775801-658a4526-a887-4d0e-bfcf-ceba5d3a7f69.png)
+
+## d) Fawn. Ratkaise Fawn. (HTB Starting point)
 
 
 
