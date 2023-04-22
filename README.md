@@ -281,7 +281,7 @@ Käytin skannauksessa komentoa: `nmap -sV 10.129.91.73`. Jossa `-sV` on version 
 Kuudes kysymys oli, että mikä käyttöjärjestelmä on Fawn koneella. Siihenkin vastaus näkyi edellisessä tulostuksessa kohdasta "Service Info: OS: Unix". </br>
 ![Screenshot 2023-04-22 143820](https://user-images.githubusercontent.com/116954333/233782229-57a18d73-90f4-409e-be3e-61cdcf852cad.png)
 
-Seitsemäs kysymys oli, että miten saa FTP:n help menun näkyviin. Vastuas on komennolla: `ftp -h`.
+Seitsemäs kysymys oli, että miten saa FTP:n help menun näkyviin. Vastaus on komennolla: `ftp -h`.
 ![Screenshot 2023-04-22 144013](https://user-images.githubusercontent.com/116954333/233782293-b8b3ba98-4017-4b3d-87bb-7ec2a3367f62.png)
 
 Kahdeksas kysymys oli, että mikä on käyttäjänimi, mitä käytetään kun halutaan kirjautua sisään ilman käyttäjää. </br>
@@ -300,6 +300,30 @@ Annoin komennon `exit`, jolla sain katkaistua FTP yhteyden, ja sen jälkeen taas
 ![Screenshot 2023-04-22 150215](https://user-images.githubusercontent.com/116954333/233783531-5ed85fed-0600-4142-a0e0-4fe2b0ece870.png)
 
 ## e) Dancing. Ratkaise Dancing. (HTB Starting point)
+
+Aloitin taas spawnaamalla koneen.
+![Screenshot 2023-04-22 151152](https://user-images.githubusercontent.com/116954333/233783973-20c05595-16e6-49e7-864a-99df9abed078.png)
+
+Ensimmäinen kysymys oli, että mikä on SMB:n koko nimi. Googlasin ja löysin [Microsoftin artikkelin](https://learn.microsoft.com/en-us/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) aiheesta. </br>
+Vastaus on siis "Server Message Block". </br>
+![Screenshot 2023-04-22 151653](https://user-images.githubusercontent.com/116954333/233784202-b1f03683-3307-4952-8472-0c6648e7c3d6.png)
+
+Toinen kysymys oli, että mitä porttia SMB käyttää. Annoin Kali koneella komennon: `nmap -sV -sC  10.129.6.157` ja tulosteesta näin kolme avointa porttia: 135, 139 ja 445. Kokeilin ensin 135, mutta se oli väärä vastaus. Sitten kokeilin seuraavaa eli 139, mutta sekin oli väärin. Viimeinen eli 445 oli sitten oikea vastaus. </br>
+Kolmanteenkin kysymykseen sai samalla tulostuksella vastauksen, eli mikä on portin 445 palvelun nimi. Vastaus oli microsoft-ds.
+![Screenshot 2023-04-22 153654](https://user-images.githubusercontent.com/116954333/233785118-3c36245b-d946-4f53-88ae-30fce64bbf43.png)
+
+Neljäs kysymys oli, että millä komennolla SMB työkalu listaa tiedot. </br>
+Vastauskentässä näky, että komento on kaksimerkkinen, joten kokeilin `ls` ja `la`, mutta ne olivat väärin. </br>
+Katsoin vinkin ja siinä neuvottiin käyttämään `-` ja sanan "list" lyhennettä, joten ratkaisu oli siis `-l`. </br>
+![Screenshot 2023-04-22 153915](https://user-images.githubusercontent.com/116954333/233785386-b8b35ef1-33cf-419d-9470-895a897b2030.png) </br>
+![Screenshot 2023-04-22 154315](https://user-images.githubusercontent.com/116954333/233785409-ab6f631f-ca14-480f-aa97-a6f354a0c70a.png)
+
+
+
+
+
+
+
 
 
 
