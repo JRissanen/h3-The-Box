@@ -260,10 +260,46 @@ Eipä tämän tehtävän tekemiseen olisi edes metasploitablea tarvinnut, mutta 
 
 ## d) Fawn. Ratkaise Fawn. (HTB Starting point)
 
+Aloitin spwanaamalla Fawn koneen. </br>
+![Screenshot 2023-04-22 140547](https://user-images.githubusercontent.com/116954333/233780557-f66afc56-214f-4019-a158-3cd95a1e8051.png)
 
+Ensimmäinen kysymys oli, mikä on FTP:n koko nimi. Kirjoitin Kali koneen terminaaliin: `man ftp` ja sain vastaukseksi "File Transfer Protocol". </br>
+![Screenshot 2023-04-22 141014](https://user-images.githubusercontent.com/116954333/233780762-0c467294-6f6a-4b4c-be88-6a183ceb2a55.png)
 
+Toinen kysymys oli että mitä porttia FTP yleensä kuuntelee. En muistanut ulkoa, joten Googlasin "FTP default port" ja sain [Terry Slatterin & Laura Chappellin](https://www.techtarget.com/searchnetworking/tip/Understanding-the-FTP-PORT-command#:~:text=You%20may%20already%20know%20that,TCP%20port%2021%20by%20default.) artikkelista oikean vatauksen eli 21. </br>
 
+Kolmas kysymys oli, että mikä turvallisen (secure) FTP:n lyhenne. Tämä oli helposti pääteltävissä ottamalla vain secure -sanan ensimmäisen kirjaimen lyhenteen alkuun (ja muistin sen muutenkin aiemmista harjoituksista). Eli SFTP. </br>
+![Screenshot 2023-04-22 142239](https://user-images.githubusercontent.com/116954333/233781345-3c77fe27-11c7-4ede-b004-bd00c0390d9d.png)
 
+Neljäs kysymys oli sama kuin yksi Meow koneen kysymyksistä, eli mitä komentoa käytetään ICMP echo pyyntöihin ja vastaus on vieläkin `ping`.
+![Screenshot 2023-04-22 142618](https://user-images.githubusercontent.com/116954333/233781481-fcff67ca-65a2-492a-8162-b8365942a790.png)
+
+Viidennes kysymys oli, että mikä FTP versio Fawn koneella on käytössä, joten otetaan selvää. </br>
+Käytin skannauksessa komentoa: `nmap -sV 10.129.91.73`. Jossa `-sV` on version tunnistamista varten annettu parametri. (Opin tämän tiivistämästäni IppSec videosta). </br>
+![Screenshot 2023-04-22 143259](https://user-images.githubusercontent.com/116954333/233782003-df561e8e-ce3c-4ad7-a0ef-2f46272d3d3c.png)
+
+Kuudes kysymys oli, että mikä käyttöjärjestelmä on Fawn koneella. Siihenkin vastaus näkyi edellisessä tulostuksessa kohdasta "Service Info: OS: Unix". </br>
+![Screenshot 2023-04-22 143820](https://user-images.githubusercontent.com/116954333/233782229-57a18d73-90f4-409e-be3e-61cdcf852cad.png)
+
+Seitsemäs kysymys oli, että miten saa FTP:n help menun näkyviin. Vastuas on komennolla: `ftp -h`.
+![Screenshot 2023-04-22 144013](https://user-images.githubusercontent.com/116954333/233782293-b8b3ba98-4017-4b3d-87bb-7ec2a3367f62.png)
+
+Kahdeksas kysymys oli, että mikä on käyttäjänimi, mitä käytetään kun halutaan kirjautua sisään ilman käyttäjää. </br>
+Googlasin kysymyksen ja sain [Stack Overflow:sta](https://stackoverflow.com/questions/3936911/how-can-i-login-anonymously-with-ftp-usr-bin-ftp) vastauksen. Käyttäjänimi on "anonymous". </br>
+![Screenshot 2023-04-22 144615](https://user-images.githubusercontent.com/116954333/233782788-8fb4a903-fc20-4c54-82e7-1ab496d4280f.png)
+
+Yhdeksäs kysymys oli, että mikä on vastauksen numerokoodi kun kirjautuu onnistuneesti FTP:llä sisään. </br>
+Otin FTP yhteyden Fawn koneeseen komennolla: `ftp 10.129.91.73`, jonka jälkeen annoin käyttäjänimeksi ja salasanaksi äsken opetetun "anonymous" käyttäjän. </br>
+Sen jälkeen sain tekstin "230 Login succesful.", joten vastaus on 230. </br>
+Kymmenes kysymys oli, että mikä on toinen yleinen tiedostojen listaus komento `dir` komennon ohella, ja sehän on `ls`. </br>
+![Screenshot 2023-04-22 145308](https://user-images.githubusercontent.com/116954333/233783211-18728afa-d847-49d7-aaf7-9b81d6db0fcf.png)
+
+Yhdestoista kysymys oli, että millä komennolla saa ladattua tiedostoja FTP palvelimelta. FTP:n käyttöä harjoiteltiin paljon Linux palvelimet kurssilla, joten tiedän komennon olevan `get`. </br>
+Kahdestoista kysymys oli sama kun Meow koneen loppu, eli syötä root flag. </br>
+Annoin komennon `exit`, jolla sain katkaistua FTP yhteyden, ja sen jälkeen taas komennolla `cat flag.txt` pystyi näkemään root flagin ja syöttämään sen Fawn starting pointin viimeiseen kysymyskenttään. </br>
+![Screenshot 2023-04-22 150215](https://user-images.githubusercontent.com/116954333/233783531-5ed85fed-0600-4142-a0e0-4fe2b0ece870.png)
+
+## e) Dancing. Ratkaise Dancing. (HTB Starting point)
 
 
 
@@ -285,6 +321,9 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/101?utm_source=mozilla&
 https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API </br>
 https://github.com/therealhalonen/penetration_testing </br>
 https://askubuntu.com/questions/100986/any-reason-not-to-start-openvpn-as-root </br>
+https://www.techtarget.com/searchnetworking/tip/Understanding-the-FTP-PORT-command#:~:text=You%20may%20already%20know%20that,TCP%20port%2021%20by%20default. </br>
+https://stackoverflow.com/questions/3936911/how-can-i-login-anonymously-with-ftp-usr-bin-ftp </br>
+
 
 
 
